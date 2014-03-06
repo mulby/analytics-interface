@@ -1,13 +1,14 @@
 //Format A
 nv.addGraph({
   generate: function() {
+  	var height = 500, width = 1000;
     chart = nv.models.lineChart()
       .options({
-        // margin: {left: 100, bottom: 100},
-        // x: function(d,i) { return i},
         showXAxis: true,
         showYAxis: true,
-        transitionDuration: 250
+        transitionDuration: 250,
+        width: width,
+        height: height
       });
 
     chart.xAxis
@@ -45,6 +46,8 @@ nv.addGraph({
       })
       d3.select('#test1')
         .datum(organizedData)
+        .attr('width', width)
+        .attr('height', height)
         .call(chart);
     });
 
