@@ -257,4 +257,5 @@ INSTALLED_APPS += (
 )
 
 S3_PROXY_BUCKET = 'edx-analytics-data'
+S3_PROXY_LOCAL_OVERRIDE = '/home/gabe/Data/proxy'
 ########## END S3 PROXY CONFIGURATION
