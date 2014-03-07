@@ -125,3 +125,31 @@
 .nv-legend {
   display: none;
 }
+
+.nv-x .tick line {
+  display: none;
+}
+
+.nv-y .tick line {
+  stroke-opacity: 0.5;
+}
+
+.nv-axis text {
+  display: none;
+}
+
+.nvd3 .nv-groups path.nv-line {
+  stroke-width: 5px;
+}
+
+.domain {
+  display: none;
+}
+
+body {
+  background-color: rgb(65, 159, 244);
+}
+
+.nvd3 {
+  fill: white;
+}

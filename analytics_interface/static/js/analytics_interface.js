@@ -15,7 +15,6 @@ nv.addGraph({
 
     chart.xAxis
         .axisLabel('Date')
-        .rotateLabels(-45)
         .tickFormat(function(d) { return d3.time.format('%b %d')(new Date(d)); });
 
     chart.yAxis
