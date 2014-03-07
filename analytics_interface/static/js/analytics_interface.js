@@ -2,7 +2,7 @@
 nv.addGraph({
   generate: function() {
   	var height = 500, width = 1000;
-    chart = nv.models.lineWithFocusChart()
+    chart = nv.models.lineChart()
       .options({
         showXAxis: true,
         showYAxis: true,
