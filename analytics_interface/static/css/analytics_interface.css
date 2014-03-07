@@ -146,10 +146,6 @@
   display: none;
 }
 
-body {
-  background-color: rgb(65, 159, 244);
-}
-
 .nvd3 {
   fill: white;
 }
