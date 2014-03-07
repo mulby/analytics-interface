@@ -73,6 +73,7 @@
   background-color: #47A1F1;
   border:  none;
   font-size: 30px;
+  box-shadow: none;
 }
 
 .well span {
@@ -98,14 +99,20 @@
 .chart-area {
   background-color: #47A1F1;
   border-bottom: 5px solid #B32E67;
+  padding-left: 3%;
 }
 
 .chart-explanations {
   padding: 20px 0;
 }
 
-.chart-explanation-label p {
+.chart-explanation-label .title {
   text-transform: uppercase;
+  border-bottom: 1px solid #ccc;
+}
+
+.chart-explanation-label .description {
+  margin: 20px 0;
 }
 .chart-explanation-item {
   background-color: #eee;
