@@ -7,6 +7,7 @@ nv.addGraph({
         showXAxis: true,
         showYAxis: true,
         transitionDuration: 250,
+        useInteractiveGuideline: true,
         width: width,
         height: height
       });
@@ -31,12 +32,12 @@ nv.addGraph({
       var organizedData = [
         {
           key: "Correct",
-          color: "#ff7f0e",
+          color: "#FFFFFF",
           values: []
         },
         {
           key: "Attempts",
-          color: "#2ca02c",
+          color: "#4A433D",
           values: []
         },
       ];
