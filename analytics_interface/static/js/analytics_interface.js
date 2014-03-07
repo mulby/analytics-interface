@@ -2,7 +2,7 @@
 nv.addGraph({
   generate: function() {
   	var height = 500, width = 1000;
-    chart = nv.models.lineChart()
+    chart = nv.models.lineWithFocusChart()
       .options({
         showXAxis: true,
         showYAxis: true,
@@ -21,7 +21,6 @@ nv.addGraph({
     chart.yAxis
         .axisLabel('Count')
         .tickFormat(d3.format('d'));
-
 
     nv.utils.windowResize(chart.update);
 
@@ -47,11 +46,33 @@ nv.addGraph({
         organizedData[0].values.push({x: parseDate(d.date), y: parseInt(d.correct)}),
         organizedData[1].values.push({x: parseDate(d.date), y: parseInt(d.attempts)})
       })
-      d3.select('#test1')
+      container = d3.select('#test1')
         .datum(organizedData)
         .attr('width', width)
         .attr('height', height)
         .call(chart);
+
+      d3.select('.nav-checkmarks')
+        .data([organizedData[0]]);
+
+      d3.select('.nav-attempts')
+        .data([organizedData[1]]);
+
+      d3.selectAll('.nav-button')
+        .on('click', function(d, i) {
+          var dispatch = d3.dispatch('legendClick', 'stateChange')
+          dispatch.legendClick(d, i);
+          d.disabled = !d.disabled;
+          if (organizedData.every(function(series) { return series.disabled})) {
+            //the default behavior of NVD3 legends is, if every single series
+            // is disabled, turn all series' back on.
+            organizedData.forEach(function(series) { series.disabled = false});
+          }
+          dispatch.stateChange({
+            disabled: data.map(function(d) { return !!d.disabled })
+          });
+          chart.update();
+        });
     });
 
     return chart;
