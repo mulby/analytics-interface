@@ -2,7 +2,7 @@
 nv.addGraph({
   generate: function() {
   	var height = 500, width = 1000;
-    chart = nv.models.lineChart()
+    chart = nv.models.lineWithFocusChart()
       .options({
         showXAxis: true,
         showYAxis: true,
@@ -21,6 +21,7 @@ nv.addGraph({
         .axisLabel('Count')
         .tickFormat(d3.format('d'));
 
+
     nv.utils.windowResize(chart.update);
 
     function parseDate(input) {
@@ -33,12 +34,12 @@ nv.addGraph({
         {
           key: "Correct",
           color: "#FFFFFF",
-          values: []
+          values: [],
         },
         {
           key: "Attempts",
           color: "#4A433D",
-          values: []
+          values: [],
         },
       ];
       data.forEach(function (d) {

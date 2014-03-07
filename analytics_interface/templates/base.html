@@ -49,13 +49,11 @@
       </div>
     </div>
     <div class="chart-area">
-      <div class="container chart-area">
+      <div class="container">
 
-        <h1>{% block page_title %}Example Base Template{% endblock page_title %}</h1>
-
-        {% block content %}
-          <p>Use this document as a way to quick start any new project.</p>
-        {% endblock content %}
+      {% block content %}
+        <svg id="test1"></svg>
+      {% endblock content %}
 
       </div> <!-- /container -->
     </div>
@@ -86,11 +84,11 @@
       </div>
     </div>
   </div>
-    <!-- Le javascript
-    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/d3.min.js' %}"></script>
+    <script src="{% static 'js/nv.d3.min.js' %}"></script>
 
     <!-- place project specific Javascript in this file -->
     <script src="{% static 'js/analytics_interface.js' %}"></script>
