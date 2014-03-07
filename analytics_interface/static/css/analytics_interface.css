@@ -134,11 +134,11 @@
   stroke-opacity: 0.5;
 }
 
-.nv-axis text {
+.nv-focus .nv-y text {
   display: none;
 }
 
-.nvd3 .nv-groups path.nv-line {
+.nv-focus .nvd3 .nv-groups path.nv-line {
   stroke-width: 5px;
 }
 
@@ -146,6 +146,15 @@
   display: none;
 }
 
-.nvd3 {
-  fill: white;
+.nv-context .nv-y .tick line {
+  display: none;
+}
+
+.nv-context .nv-axis text {
+  display: none;
+}
+
+#chart {
+  width: 1000px;
+  height: 500px;
 }

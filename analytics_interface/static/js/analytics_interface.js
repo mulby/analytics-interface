@@ -1,25 +1,10 @@
 //Format A
 nv.addGraph({
   generate: function() {
-  	var height = 500, width = 1000;
-    chart = nv.models.lineWithFocusChart()
-      .options({
-        showXAxis: true,
-        showYAxis: true,
-        transitionDuration: 250,
-        useInteractiveGuideline: true,
-        width: width,
-        height: height,
-        showLegend: false
-      });
+    chart = nv.models.lineWithFocusChart();
 
     chart.xAxis
-        .axisLabel('Date')
         .tickFormat(function(d) { return d3.time.format('%b %d')(new Date(d)); });
-
-    chart.yAxis
-        .axisLabel('Count')
-        .tickFormat(d3.format('d'));
 
     nv.utils.windowResize(chart.update);
 
@@ -31,7 +16,7 @@ nv.addGraph({
       return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    d3.csv('data/answer_counts_per_day.csv', function (data) {
+    d3.csv('data/answer_counts_per_day_hackathon.csv', function (data) {
       var organizedData = [
         {
           key: "Correct",
@@ -44,35 +29,37 @@ nv.addGraph({
           values: [],
         },
       ];
+      var correctSum = 0, attemptsSum = 0;
       data.forEach(function (d) {
-        organizedData[0].values.push({x: parseDate(d.date), y: parseInt(d.correct)}),
-        organizedData[1].values.push({x: parseDate(d.date), y: parseInt(d.attempts)})
+        correctSum += parseInt(d.correct)
+        attemptsSum += parseInt(d.attempts)
+        organizedData[0].values.push({x: parseDate(d.date), y: correctSum}),
+        organizedData[1].values.push({x: parseDate(d.date), y: attemptsSum})
       })
-      var lastDataPoint = data[data.length - 1];
-      $('.total-checkmarks').text(numberWithCommas(lastDataPoint.correct) + " Checkmarks")
-      $('.total-attempts').text(numberWithCommas(lastDataPoint.attempts) + " Attempts")
-      container = d3.select('#test1')
+      $('.total-checkmarks').text("  " + numberWithCommas(correctSum.toString()) + " Checkmarks")
+      $('.total-attempts').text("  " + numberWithCommas(attemptsSum.toString()) + " Attempts")
+      d3.select('#chart')
         .datum(organizedData)
-        .attr('width', width)
-        .attr('height', height)
         .call(chart);
 
       d3.select('.nav-checkmarks')
-        .data([organizedData[0]]);
+        .data([{label: '.nav-checkmarks', data: organizedData[0]}]);
 
       d3.select('.nav-attempts')
-        .data([organizedData[1]]);
+        .data([{label: '.nav-attempts', data: organizedData[1]}]);
 
       d3.selectAll('.nav-button')
         .on('click', function(d, i) {
           var dispatch = d3.dispatch('legendClick', 'stateChange')
           dispatch.legendClick(d, i);
-          d.disabled = !d.disabled;
-          if (organizedData.every(function(series) { return series.disabled})) {
-            //the default behavior of NVD3 legends is, if every single series
-            // is disabled, turn all series' back on.
-            organizedData.forEach(function(series) { series.disabled = false});
+          var listItem = $(d.label).parent()
+          if (listItem.hasClass('active')) {
+            listItem.removeClass('active').addClass('ready')
+          } else if (listItem.hasClass('ready')) {
+            listItem.removeClass('ready').addClass('active')
           }
+          d = d.data
+          d.disabled = !d.disabled;
           dispatch.stateChange({
             disabled: data.map(function(d) { return !!d.disabled })
           });

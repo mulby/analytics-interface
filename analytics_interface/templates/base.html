@@ -53,21 +53,22 @@
       <div class="container">
         <div class="row">
           <div class="col-4 col-sm-4 col-lg-6">
-            <div class="well well-checkmarks"><span class="glyphicon glyphicon-ok total-checkmarks"></span></div>
+            <div class="well well-checkmarks"><span class="glyphicon glyphicon-ok"></span><span class="total-checkmarks" /></div>
           </div>
           <div class="col-4 col-sm-4 col-lg-6">
             <div class="well well-attempts">
-                <span class="glyphicon glyphicon-user total-attempts"></span>
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="total-attempts" />
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="chart-area">
-      <div class="container">
+      <div class="container with-3d-shadow with-transitions">
 
       {% block content %}
-        <svg id="test1"></svg>
+        <svg id="chart"></svg>
       {% endblock content %}
 
       </div> <!-- /container -->
