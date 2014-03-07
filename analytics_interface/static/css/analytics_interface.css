@@ -26,3 +26,96 @@ body {
 .nvd3 {
   fill: white;
 }
+
+/* navigation */
+
+.navbar  {
+  background-color: #ffffff;
+  box-shadow: 0 2px 2px #333;
+}
+
+.navbar-brand img {
+  margin-right: 20px;
+}
+.navbar-default .navbar-brand {
+  font-size: 26px;
+  line-height: 50px;
+  color: #47A1F1;
+}
+
+.nav-pills li {
+  margin-right: 10px;
+}
+
+.nav-pills li.ready a {
+  box-shadow: 0 2px 0px #024969;
+  background-color: #47A1F1;
+  color: #fff;
+}
+
+.nav-pills li.ready a:hover {
+  top:1px;
+  box-shadow: 0 1px 0px #024969;
+  background-color: #47A1F1;
+  color: #fff;
+}
+
+.nav-pills li.ready a:active {
+  top:2px;
+  box-shadow: 0 0px 0px #024969;
+  background-color: #47A1F1;
+  color: #fff;
+}
+
+.nav-pills li {
+  margin-right: 10px;
+}
+.nav-pills li.active {
+  border-radius: 5px;
+}
+
+.nav-pills li.active a {
+  background-color: #fff;
+  box-shadow: 0 0 2px #333 inset;
+  color: #47A1F1;
+}
+
+.nav-pills li.active a:hover {
+  box-shadow: 0 0 4px #333 inset;
+  color: #47A1F1;
+  background-color: #fff;
+}
+
+.nav-pills li.disabled a:hover {
+  cursor: default;
+}
+
+
+/* chart */
+
+.chart-controls {
+  padding-top: 40px;
+  padding-bottom: 10px;
+  background-color: #555;
+}
+
+.chart-area {
+  background-color: #47A1F1;
+  height:400px;
+  border-bottom: 5px solid #B32E67;
+}
+
+.chart-explanations {
+  padding: 20px 0;
+}
+
+.chart-explanation-label p {
+  text-transform: uppercase;
+}
+.chart-explanation-item {
+  background-color: #eee;
+  box-shadow: 0 0 3px #aaa inset;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom:20px;
+}
