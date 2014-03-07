@@ -9,7 +9,8 @@ nv.addGraph({
         transitionDuration: 250,
         useInteractiveGuideline: true,
         width: width,
-        height: height
+        height: height,
+        showLegend: false
       });
 
     chart.xAxis

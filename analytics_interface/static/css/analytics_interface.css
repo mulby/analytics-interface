@@ -62,7 +62,31 @@
   cursor: default;
 }
 
+/* stats */
 
+.stats-area {
+  background-color: #47A1F1 ;
+  padding-top: 20px;
+}
+
+.stats-area .well {
+  background-color: #47A1F1;
+  border:  none;
+  font-size: 30px;
+}
+
+.well span {
+  margin-right: 20px;
+}
+
+.well-attempts {
+  color: #4A433D;
+  text-align: left;
+}
+.well-checkmarks {
+  color: #fff;
+  text-align: right;
+}
 /* chart */
 
 .chart-controls {
