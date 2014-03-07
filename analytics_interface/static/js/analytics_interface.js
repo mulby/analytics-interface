@@ -27,6 +27,9 @@ nv.addGraph({
       var parts = input.split('-');
       return new Date(parts[0], parts[1]-1, parts[2]);
     }
+    function numberWithCommas(x) {
+      return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     d3.csv('data/answer_counts_per_day.csv', function (data) {
       var organizedData = [
@@ -45,6 +48,9 @@ nv.addGraph({
         organizedData[0].values.push({x: parseDate(d.date), y: parseInt(d.correct)}),
         organizedData[1].values.push({x: parseDate(d.date), y: parseInt(d.attempts)})
       })
+      var lastDataPoint = data[data.length - 1];
+      $('.total-checkmarks').text(numberWithCommas(lastDataPoint.correct) + " Checkmarks")
+      $('.total-attempts').text(numberWithCommas(lastDataPoint.attempts) + " Attempts")
       container = d3.select('#test1')
         .datum(organizedData)
         .attr('width', width)
